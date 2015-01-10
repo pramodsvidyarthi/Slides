@@ -7,11 +7,20 @@ require.config({
 	shim:{
 		'backbone':{
 			'deps':['jquery','underscore'],
-			'exports':'Backbone'
+			'exports':'Backbone'	
 		}
 	}
-});
+});	
 
-require(['backbone'],function (bb) {
-	console.log(bb);
+require(['collections/slides','views/slideview'],function (slidecollection, slideviews) {
+		var a = new slidecollection([{
+			title:'Backbone js is awesome'
+		},{
+			title:'underscore js is awesome'
+		},{
+			title:'jquery js is awesome'
+		},{
+			title:'require js is awesome'
+		}]);
+		new slideviews.slidesview({collection:a});
 });
