@@ -13,5 +13,8 @@ require.config({
 }); 
 
 require(['views/appview'],function (appview) {
+      window.App = {
+        vent:_.extend({},Backbone.Events)
+      };
       new appview;
 });
