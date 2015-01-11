@@ -5,6 +5,11 @@ define(['backbone',
 ], function(Backbone, slidecollections, slideviews, router) {
     var app = Backbone.View.extend({
         el: $('body'),
+
+        events:{
+            'keyup':'changeSlide'
+        },
+
         initialize: function() {
             this.data();
             this.render();
@@ -30,6 +35,16 @@ define(['backbone',
                 collection: this.collection
             });
             return this;
+        },
+
+        changeSlide:function(e){
+            //37 -left
+            //39-right
+            if(e.which === 37 || e.which === 39){
+                App.vent.trigger('changeslide',{
+                    direction:e.which === 39 ? 'next':'prev'
+                });
+            }
         }
     });
 
