@@ -5,6 +5,11 @@ define(['backbone'],function(Backbone){
 		el:$('.slides'),
 		initialize:function(){
 			this.renderAll();
+			App.vent.on('init',this.hideAllButFirst,this);
+		},
+
+		hideAllButFirst:function(){
+			this.$el.children(':nth-child(n+2)').hide();
 		},
 
 		renderAll:function(){

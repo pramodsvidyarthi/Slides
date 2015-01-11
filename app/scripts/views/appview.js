@@ -8,6 +8,8 @@ define(['backbone',
         initialize: function() {
             this.data();
             this.render();
+            App.router = new router();
+            Backbone.history.start();
         },
 
         data: function() {
@@ -24,8 +26,6 @@ define(['backbone',
 
         render: function() {
             //this.$el.append(new slideviews.slidesview({collection:this.collection}).el);
-            App.router = new router();
-            Backbone.history.start();
             new slideviews.slidesview({
                 collection: this.collection
             });
