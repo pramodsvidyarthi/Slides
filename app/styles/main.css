@@ -423,10 +423,20 @@ input[type="checkbox"], input[type="radio"] {
   padding: 50px 200px;
   font-size: 50px; }
 
-h1, .h1 {
+h1, .h1, .normal {
   line-height: 1.3em;
   letter-spacing: -1px;
-  font-family: 'Oswald', sans-serif; }
+  font-family: 'Oswald', sans-serif;
+  font-size: 100px; }
+  h1.medium, .h1.medium, .normal.medium {
+    text-align: left;
+    font-size: 85px; }
+  h1.large, .h1.large, .normal.large {
+    text-align: left;
+    font-size: 70px; }
+  h1.x-large, .h1.x-large, .normal.x-large {
+    text-align: left;
+    font-size: 50px; }
 
 * {
   -webkit-box-sizing: border-box;

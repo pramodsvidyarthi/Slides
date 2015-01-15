@@ -50,7 +50,7 @@ define(['backbone'], function(Backbone) {
         },
 
         setslideIndex: function(opts) {
-            if (opts.slideindex && opts.slideindex < this.slidenum) {
+            if (opts.slideindex) {
                 return this.currentslideIndex = ~~opts.slideindex;
             }
             this.currentslideIndex += opts.direction === 'next' ? 1 : -1;
@@ -86,7 +86,7 @@ define(['backbone'], function(Backbone) {
         },
 
         render: function() {
-            this.$el.html(_.template("<h1> <%= title %> </h1>")(this.model.toJSON()))
+            this.$el.html(_.template("<h1 class='<%= size %>'> <%= title %> </h1>")(this.model.toJSON()))
             return this;
         }
     });

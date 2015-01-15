@@ -18,15 +18,7 @@ define(['backbone',
         },
 
         data: function() {
-            this.collection = new slidecollections([{
-                title: 'Backbone js is awesome'
-            }, {
-                title: 'underscore js is awesome'
-            }, {
-                title: 'jquery js is awesome'
-            }, {
-                title: 'require js is awesome'
-            }]);
+            this.collection = new slidecollections(window.slides);
         },
 
         render: function() {
