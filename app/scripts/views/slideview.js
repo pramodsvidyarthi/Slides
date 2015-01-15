@@ -81,13 +81,24 @@ define(['backbone'], function(Backbone) {
     var slideview = Backbone.View.extend({
         tagName: 'div',
         className: 'slide',
+        titleTemplate:_.template("<h1 class='<%= size %>'> <%= title %> </h1>"),
+        imageTemplate:_.template("<img class='img' src='<%= image %>' alt='no preview' />"),
         initialize: function() {
             this.render();
         },
 
         render: function() {
-            this.$el.html(_.template("<h1 class='<%= size %>'> <%= title %> </h1>")(this.model.toJSON()))
+            //console.log(this.model);
+            if(this.model.get('image')){
+                this.renderImage();
+            } else {
+                this.$el.html(this.titleTemplate(this.model.toJSON()));    
+            }
             return this;
+        },
+
+        renderImage:function(){
+            this.$el.html(this.imageTemplate(this.model.toJSON()));
         }
     });
 
