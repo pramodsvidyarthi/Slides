@@ -1,0 +1,21 @@
+$sans-serif-2: 'Varela Round', sans-serif;
+
+.slides{
+	display: table; //helps u easily align to center vertically and horizontally
+	height:100%;
+	width:100%;
+}
+
+.slide{
+	display:table-cell; //coz working wit table i.e styling table as mentioned above
+	vertical-align: middle; //align to center from top(vertical not horizontal)
+	position: relative;
+	padding:50px 200px; //btw slides and slide
+	font-size: 50px;
+} 
+
+h1, .h1{
+	line-height:1.3em;
+	letter-spacing: -1px;
+    font-family: 'Oswald', sans-serif;
+}

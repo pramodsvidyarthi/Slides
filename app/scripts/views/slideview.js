@@ -17,9 +17,9 @@ define(['backbone'], function(Backbone) {
 
         changeSlide: function(opts) {
             //router gives index as a string convert to number using parseInt or prefixing ~~
+            this.setslideIndex(opts);
             var slides = this.$el.children();
             var nextslide = this.getNextslide(slides);
-            this.setslideIndex(opts);
 
             //pass 3 parameters i.e alltheslides, thenewslide (or) nextslide to which it has to animate and the direction.
             this.animatetonewSlide(slides, nextslide, opts.direction);
@@ -27,34 +27,32 @@ define(['backbone'], function(Backbone) {
         },
 
         animatetonewSlide: function(alltheslides, newslide, direction) {
-            alltheslides.css('position', 'absolute')
-                .filter(':visible') //find the one that is visible
-            .animate({
+            alltheslides.filter(':visible') //find the one that is visible
+                        .animate({
                 //animate by sending to bottom or bring from top
                 'top': direction === 'next' ? '100%' : '-100%',
                 'opacity': 'hide'
-            }, 1000, function() {
+            }, 600, function() {
                 //after animating setting it back to 0.
                 $(this).css('top', '0');
                 newslide.css('top', direction === 'next' ? '-100%' : '100%')
                     .animate({
                         'top': '0',
                         'opacity': 'show'
-                    }, 1000, function() {
+                    }, 600, function() {
                         $(this).css('top', '0');
                     })
             });
         },
 
         getNextslide: function(slides) {
-            return slides.eq(this.currentslideIndex - 1)
+            return slides.eq(this.currentslideIndex - 1);
         },
 
         setslideIndex: function(opts) {
-            if (opts.slideindex) {
-                return this.currentslideIndex = ~~opts.slideindex
+            if (opts.slideindex && opts.slideindex < this.slidenum) {
+                return this.currentslideIndex = ~~opts.slideindex;
             }
-
             this.currentslideIndex += opts.direction === 'next' ? 1 : -1;
             if (this.currentslideIndex > this.slidenum) {
                 this.currentslideIndex = 1
@@ -63,7 +61,6 @@ define(['backbone'], function(Backbone) {
             if (this.currentslideIndex <= 0) {
                 this.currentslideIndex = this.slidenum;
             }
-            //debugger;
         },
 
         renderAll: function() {
