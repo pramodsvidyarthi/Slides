@@ -12,6 +12,22 @@ $sans-serif-2: 'Varela Round', sans-serif;
 	position: relative;
 	padding:50px 200px; //btw slides and slide
 	font-size: 50px;
+
+	.img{
+	  max-width: 100%;
+	  height:50%;
+      border:2px solid lighten(black, 30%);
+	  padding:2px;
+	}	
+
+	.bullets {
+	  margin-top: -4%;	
+	  padding-left: 15%;
+		& > li {
+		   list-style-type: initial;
+		   text-align: left;	
+		}
+	}
 } 
 
 h1, .h1, .normal{
@@ -37,9 +53,5 @@ h1, .h1, .normal{
 
 }
 
-.img{
-	max-width: 100%;
-	height:50%;
-	border:2px solid lighten(black, 30%);
-	padding:2px;
-}
+
+

@@ -6,8 +6,9 @@ define(['backbone',
     var app = Backbone.View.extend({
         el: $('body'),
 
-        events:{
-            'keyup':'changeSlide'
+        events: {
+            //'keyup': 'changeSlide'
+            'keyup': 'changeSlide'
         },
 
         initialize: function() {
@@ -29,12 +30,12 @@ define(['backbone',
             return this;
         },
 
-        changeSlide:function(e){
+        changeSlide: function(e) {
             //37 -left
             //39-right
-            if(e.which === 37 || e.which === 39){
-                App.vent.trigger('changeslide',{
-                    direction:e.which === 39 ? 'next':'prev'
+            if (e.which === 37 || e.which === 39) {
+                App.vent.trigger('changeslide', {
+                    direction: e.which === 39 ? 'next' : 'prev'
                 });
             }
         }
