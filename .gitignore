@@ -3,4 +3,4 @@ dist
 .tmp
 bower_components
 test
-.sass-cahche
+.sass-cache
