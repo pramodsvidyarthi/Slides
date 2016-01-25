@@ -16,7 +16,7 @@ define(['backbone'], function(Backbone) {
                 },
 
                 changeSlide: function(opts) {
-                    //router gives index as a string convert to number using parseInt or prefixing ~~  
+                    //router gives index as a string convert to number using parseInt or prefixing ~~
                     this.setslideIndex(opts);
                     var slides = this.$el.children();
                     var nextslide = this.getNextslide(slides);
@@ -29,7 +29,8 @@ define(['backbone'], function(Backbone) {
                 animatetonewSlide: function(alltheslides, newslide, direction) {
                     var self = this;
                      alltheslides.filter(':visible') //find the one that is visible
-                    .animate({
+                     .stop()
+                     .animate({
                         //animate by sending to bottom or bring from top (or) left
                         'left': direction === 'next' ? '100%' : '-100%',
                         'opacity': 'hide'
@@ -37,6 +38,7 @@ define(['backbone'], function(Backbone) {
                         //after animating setting it back to 0.
                         $(this).css('left', '0');
                         newslide.css('left', direction === 'next' ? '-100%' : '100%')
+                            .stop()
                             .animate({
                                 'left': '0',
                                 'opacity': 'show'
